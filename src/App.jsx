@@ -1,34 +1,45 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import { useEffect, useState } from 'react'
 
 function App() {
-  const [count, setCount] = useState(0)
+  const [services, setServices] = useState([])
+  const [loading, setLoading] = useState(true)
+
+  useEffect(() => {
+    fetch("http://localhost:3001/api/v1/services")
+      .then(res => res.json())
+      .then(data => {
+        setServices(data)
+        setLoading(false)
+      })
+      .catch(err => {
+        console.error("API Error:", err)
+        setLoading(false)
+      })
+  }, [])
 
   return (
-    <>
-      <div>
-        <a href="https://vitejs.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
+    <div className="app-container">
+      <header className="hero">
+        <h1>Premium Property Management</h1>
+        <p>Expert care for your real estate portfolio.</p>
+      </header>
+
+      <section className="services-section">
+        <h2>Our Services</h2>
+        {loading ? (
+          <p>Loading services...</p>
+        ) : (
+          <div className="services-grid">
+            {services.map(service => (
+              <div key={service.id} className="service-card">
+                <h3>{service.description}</h3>
+              </div>
+            ))}
+            
+          </div>
+        )}
+      </section>
+    </div>
   )
 }
 
