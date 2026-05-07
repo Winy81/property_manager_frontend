@@ -28,8 +28,8 @@ html, body {
 }
 
 .navbar, .footer {
-  width: 100%; /* Spans edge to edge */
-  background: white;
+  width: 100%;
+  background: #fafafa;
   border-bottom: 1px solid var(--border);
 }
 
@@ -38,13 +38,13 @@ html, body {
   border-top: 1px solid var(--border);
   border-bottom: none;
   padding: 25px 0;
-  margin-top: auto; /* Pushes footer to the very bottom */
+  margin-top: auto;
 }
 
 .full-width-container {
   width: 100%;
-  max-width: 1300px; /* Constrains the content in the middle */
-  margin: 0 auto;    /* The magic centering bit */
+  max-width: 1300px; 
+  margin: 0 auto; 
   padding: 0 50px;
 }
 
@@ -81,6 +81,40 @@ html, body {
   background: var(--bg-blue);
   padding: 50px 40px;
   border-radius: 2px;
+}
+
+.contact-info {
+  margin-bottom: 50px;
+}
+
+.contact-info h3 {
+  color: var(--text-blue);
+  font-size: 1.8rem;
+  margin-bottom: 20px;
+}
+
+.contact-info p {
+  font-size: 1.1rem;
+  line-height: 1.8;
+  color: #444;
+  margin: 10px 0;
+}
+
+.back-button {
+  background: none;
+  border: 1px solid var(--border);
+  color: var(--text-blue);
+  padding: 12px 24px;
+  cursor: pointer;
+  font-weight: 600;
+  border-radius: 4px;
+  transition: all 0.2s ease;
+}
+
+.back-button:hover {
+  background: var(--text-blue);
+  color: white;
+  border-color: var(--text-blue);
 }
 
 .service-card h3 { margin: 0 0 20px 0; color: var(--text-blue); font-size: 1.5rem; }
